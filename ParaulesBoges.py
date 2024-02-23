@@ -19,8 +19,8 @@ def desordenar_frase(frase):
 
         random.shuffle(lletres)
 
-        paraula_desordenada = primera_lletra + ''.join(lletres) + ultima_lletra
-        frase_desordenada += paraula_desordenada + ' '
+        palabra_desordenada = primera_lletra + ''.join(lletres) + ultima_lletra
+        frase_desordenada += palabra_desordenada + ' '
 
     return frase_desordenada.rstrip()
 
