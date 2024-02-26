@@ -7,28 +7,41 @@ Implementar en Python un programa que demani una frase per teclat i la retorni p
 
 """
 
+import random
+import string
 
-try:
-    import random
-    def desordenar_frase(frase):
-        paraules = frase.split()
-        frase_desordenada = ""
+def obtener_letras_validas(palabra):
+    """Función para obtener solo las letras válidas de una palabra"""
+    return [char for char in palabra if char in string.ascii_letters]
 
-        for palabra in paraules:
-            lletres = list(palabra)
-            primera_lletra = lletres.pop(0)
-            ultima_lletra = lletres.pop()
+def desordenar_palabra(palabra):
+    """Función para desordenar una palabra"""
+    letras_validas = obtener_letras_validas(palabra)
+    if letras_validas:
+        primera_letra = letras_validas.pop(0)
+        ultima_letra = letras_validas.pop()
 
-            random.shuffle(lletres)
+        random.shuffle(letras_validas)
 
-            palabra_desordenada = primera_lletra + ''.join(lletres) + ultima_lletra
+        palabra_desordenada = primera_letra + ''.join(letras_validas) + ultima_letra
+        return palabra_desordenada
+    else:
+        return ""
+
+def desordenar_frase(frase):
+    """Función para desordenar una frase"""
+    paraules = frase.split()
+    frase_desordenada = ""
+    for palabra in paraules:
+        palabra_desordenada = desordenar_palabra(palabra)
+        if palabra_desordenada:
             frase_desordenada += palabra_desordenada + ' '
+    return frase_desordenada
 
-        return frase_desordenada
-
-
+def final():
+    """Función final / input"""
     frase = input("Introdueix una frase: ")
     frase_desordenada = desordenar_frase(frase)
     print("Frase desordenada:", frase_desordenada)
-except:
-    print("TUS MUERTOS PISADOS <3")
+
+final()
