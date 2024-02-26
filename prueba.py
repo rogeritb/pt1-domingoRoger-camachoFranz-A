@@ -1,12 +1,3 @@
-"""
-Roger Domingo Meléndez - Franz Camacho Panozo
-23/02/2024
-ASIXc M03 UF2 pt1 R1: Disseny descendent: Dividir en funcions
-Descripció: ParaulesBoges.
-Implementar en Python un programa que demani una frase per teclat i la retorni per pantalla amb les lletres de cada paraula de la frase desordenada, tal com diu l’estudi de la Universitat de Cambridge.
-
-"""
-
 import random
 import string
 
@@ -29,10 +20,15 @@ def desordenar_frase(frase):
     palabras = frase.split()
     frase_desordenada = ""
     for palabra in palabras:
-        if palabra.isalpha():
-            palabra_desordenada = desordenar_palabra(palabra)
+        if "@" in palabra:  # Si es una dirección de correo electrónico
+            partes_correo = palabra.split("@")
+            usuario = partes_correo[0]
+            dominio = partes_correo[1]
+            usuario_desordenado = desordenar_palabra(usuario)
+            dominio_desordenado = desordenar_palabra(dominio)
+            palabra_desordenada = usuario_desordenado + "@" + dominio_desordenado
         else:
-            palabra_desordenada = palabra
+            palabra_desordenada = desordenar_palabra(palabra)
         frase_desordenada += palabra_desordenada + ' '
     return frase_desordenada.strip()
 
