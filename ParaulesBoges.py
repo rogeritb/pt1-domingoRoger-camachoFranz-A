@@ -11,8 +11,8 @@ import random
 import string
 
 def desordenar_palabra(palabra):
-    """Función para desordenar una palabra"""
-    if len(palabra) <= 1:
+    """Función para desordenar una palabra respetando la primera y última letra"""
+    if len(palabra) <= 3 or palabra.isdigit():
         return palabra
 
     primera_caracter = palabra[0]
@@ -29,10 +29,13 @@ def desordenar_frase(frase):
     palabras = frase.split()
     frase_desordenada = ""
     for palabra in palabras:
-        if palabra.isalpha():
-            palabra_desordenada = desordenar_palabra(palabra)
+        if "@" in palabra:
+            partes_correo = palabra.split('@')
+            usuario = desordenar_palabra(partes_correo[0])
+            dominio = '.'.join([desordenar_palabra(part) for part in partes_correo[1].split('.')])
+            palabra_desordenada = f"{usuario}@{dominio}"
         else:
-            palabra_desordenada = palabra
+            palabra_desordenada = desordenar_palabra(palabra)
         frase_desordenada += palabra_desordenada + ' '
     return frase_desordenada.strip()
 
@@ -42,6 +45,4 @@ def main():
     frase_desordenada = desordenar_frase(frase)
     print("Frase desordenada:", frase_desordenada)
 
-# Llamada a la función main al final del script
 main()
-
