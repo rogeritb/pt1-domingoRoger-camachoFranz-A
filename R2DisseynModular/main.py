@@ -6,13 +6,13 @@ Descripcio
 La seva funcionalitat és obtenir les dades, processar-les per a obtenir les “paraules boges” i finalment mostrar-les per pantalla
 """
 
-import ParaulesBoges
+from crazy_words import *
+from data_source import *
 
 def main():
-    """Funció principal"""
-    frase = input("Introdueix una frase: ")
-    frase_desordenada = ParaulesBoges.desordenar_frase(frase)
+    """Función principal"""
+    frase = input("Introduce una frase: ")
+    frase_desordenada = desordenar_frase(frase)
     print("Frase desordenada:", frase_desordenada)
 
-if __name__ == "__main__":
-    main()
+main()

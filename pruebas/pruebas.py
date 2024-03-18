@@ -1,15 +1,3 @@
-"""
-Roger Domingo Meléndez - Franz Camacho Panozo
-04/03/2024
-ASIXc M03 UF2 pt1 R2: Disseny Modular, R2, crazy_words.py
-Descripcio
-És “qui sap”, és a dir, té implementada la lògica necessària per a convertir un text de paraules “normals”, en un text de “paraules boges”
-"""
-
-
-import random
-import string
-
 import random
 
 def desordenar_caracteres(caracteres):
@@ -51,15 +39,23 @@ def desordenar_frase(frase):
         frase_desordenada += palabra_desordenada + ' '
     return frase_desordenada.strip()
 
-def desordenar_frase_con_numeros(frase):
-    """Función para desordenar una frase manteniendo los números en su posición"""
-    palabras = frase.split()
-    frase_desordenada = ""
-    for palabra in palabras:
-        if palabra.isdigit():
-            frase_desordenada += palabra + ' '
+
+def mantener_numeros_en_su_posicion(cadena):
+    """Función para mantener los números en su posición sin desordenarlos"""
+    numeros = ''.join([c for c in cadena if c.isdigit()])
+    caracteres = ''.join([c for c in cadena if not c.isdigit()])
+
+    resultado = ""
+    indice_num = 0
+    indice_car = 0
+
+    for char in cadena:
+        if char.isdigit():
+            resultado += numeros[indice_num]
+            indice_num += 1
         else:
-            palabra_desordenada = desordenar_palabra_correo(palabra)
-            frase_desordenada += palabra_desordenada + ' '
-    return frase_desordenada.strip()
+            resultado += char
+
+    return resultado
+
 
