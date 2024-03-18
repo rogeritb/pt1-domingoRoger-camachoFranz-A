@@ -47,7 +47,6 @@ def mantener_numeros_en_su_posicion(cadena):
 
     resultado = ""
     indice_num = 0
-    indice_car = 0
 
     for char in cadena:
         if char.isdigit():
@@ -57,5 +56,4 @@ def mantener_numeros_en_su_posicion(cadena):
             resultado += char
 
     return resultado
-
 
