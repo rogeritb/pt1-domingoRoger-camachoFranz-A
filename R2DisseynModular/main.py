@@ -11,7 +11,7 @@ from data_source import *
 
 def main():
     """Función principal"""
-    frase = input("Introduce una frase: ")
+    frase = get_data_from_keyboard()
     frase_desordenada = desordenar_frase(frase)
     print("Frase desordenada:", frase_desordenada)
 
