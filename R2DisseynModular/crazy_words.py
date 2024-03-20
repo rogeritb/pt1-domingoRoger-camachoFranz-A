@@ -7,32 +7,36 @@ Descripcio
 """
 
 
-import random
-import string
+def mantener_numeros_en_su_posicion(palabra):
+    tiene_numeros = any(c.isdigit() for c in palabra)
+    tiene_no_numeros = any(not c.isdigit() for c in palabra)
 
+    if tiene_numeros and tiene_no_numeros:
+        return palabra
+
+    return ''.join(c for c in palabra)
 import random
 
 def desordenar_caracteres(caracteres):
-    """Función para desordenar una lista de caracteres"""
-    caracteres_desordenados = list(caracteres)
-    random.shuffle(caracteres_desordenados)
-    return ''.join(caracteres_desordenados)
+    if len(caracteres) <= 2:
+        return caracteres
+    caracteres_intermedios = list(caracteres[1:-1])
+    random.shuffle(caracteres_intermedios)
+    return caracteres[0] + ''.join(caracteres_intermedios) + caracteres[-1]
 
 def desordenar_palabra(palabra):
-    """Función para desordenar una palabra respetando la primera y última letra"""
-    if len(palabra) <= 3 or palabra.isdigit():
+    if len(palabra) <= 3 or (all(c.isdigit() or c == '.' for c in palabra)):
         return palabra
 
     primera_caracter = palabra[0]
     ultima_caracter = palabra[-1]
-    caracteres_intermedios = palabra[1:-1]
-    caracteres_intermedios_desordenados = desordenar_caracteres(caracteres_intermedios)
+
+    caracteres_intermedios_desordenados = desordenar_caracteres(palabra[1:-1])
 
     palabra_desordenada = primera_caracter + caracteres_intermedios_desordenados + ultima_caracter
     return palabra_desordenada
 
 def desordenar_palabra_correo(palabra):
-    """Función para desordenar una palabra de un correo electrónico"""
     if "@" in palabra:
         partes_correo = palabra.split('@')
         usuario_desordenado = desordenar_palabra(partes_correo[0])
@@ -43,23 +47,9 @@ def desordenar_palabra_correo(palabra):
         return desordenar_palabra(palabra)
 
 def desordenar_frase(frase):
-    """Función para desordenar una frase"""
     palabras = frase.split()
     frase_desordenada = ""
     for palabra in palabras:
         palabra_desordenada = desordenar_palabra_correo(palabra)
         frase_desordenada += palabra_desordenada + ' '
     return frase_desordenada.strip()
-
-def desordenar_frase_con_numeros(frase):
-    """Función para desordenar una frase manteniendo los números en su posición"""
-    palabras = frase.split()
-    frase_desordenada = ""
-    for palabra in palabras:
-        if palabra.isdigit():
-            frase_desordenada += palabra + ' '
-        else:
-            palabra_desordenada = desordenar_palabra_correo(palabra)
-            frase_desordenada += palabra_desordenada + ' '
-    return frase_desordenada.strip()
-
