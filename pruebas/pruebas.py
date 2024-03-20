@@ -9,12 +9,12 @@ def desordenar_caracteres(caracteres):
     return caracteres[0] + ''.join(caracteres_intermedios) + caracteres[-1]
 
 def desordenar_palabra(palabra):
-
-    if len(palabra) <= 3 or palabra.isdigit():
+    if len(palabra) <= 3 or (all(c.isdigit() or c == '.' for c in palabra)):
         return palabra
 
     primera_caracter = palabra[0]
     ultima_caracter = palabra[-1]
+
     caracteres_intermedios_desordenados = desordenar_caracteres(palabra[1:-1])
 
     palabra_desordenada = primera_caracter + caracteres_intermedios_desordenados + ultima_caracter
@@ -40,18 +40,8 @@ def desordenar_frase(frase):
         frase_desordenada += palabra_desordenada + ' '
     return frase_desordenada.strip()
 
-def mantener_numeros_en_su_posicion(cadena):
 
-    numeros = ''.join([c for c in cadena if c.isdigit()])
-    caracteres = ''.join([c for c in cadena if not c.isdigit()])
-    resultado = ""
-    indice_num = 0
-    indice_car = 0
-    for char in cadena:
-        if char.isdigit():
-            resultado += numeros[indice_num]
-            indice_num += 1
-        else:
-            resultado += caracteres[indice_car]
-            indice_car += 1
-    return resultado
+def mantener_numeros_en_su_posicion(palabra):
+    if any(c.isalpha() for c in palabra):
+        return palabra
+    return ''.join(c for c in palabra)

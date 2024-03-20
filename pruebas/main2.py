@@ -1,5 +1,8 @@
-from pruebas2 import *
+""""
+!Holabuenas! Mi correocorreo es tusmuertos@pisados.cat y mi numeronumero es !12345 , pero el precioprecio es de 1234,1234$.
+"""
 
+from pruebas2 import *
 
 def main():
     """Función principal"""
