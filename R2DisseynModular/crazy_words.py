@@ -10,7 +10,6 @@ import random
 from data_source import *
 
 def mostrar_menu():
-    print("Selecciona una opción:")
     print("1. Obtener datos desde el teclado")
     print("2. Obtener datos desde el servidor")
     print("3. Obtener datos desde ChatGPT")
@@ -18,9 +17,9 @@ def mostrar_menu():
     print("5. Salir")
 
 def ejecutar_opcion(opcion):
+    opcion = int(opcion)
     if opcion == 1:
         datos = get_data_from_keyboard()
-        # Aquí puedes hacer lo que necesites con los datos obtenidos
     elif opcion == 2:
         URL = "https://api.api-ninjas.com/v1/dadjokes"
         get_data_from_server(URL)

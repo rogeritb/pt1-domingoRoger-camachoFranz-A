@@ -9,9 +9,9 @@ La seva funcionalitat és obtenir les dades, processar-les per a obtenir les “
 from crazy_words import *
 from data_source import *
 
-try:
-    mostrar_menu()
-
-
-except:
-    print("xx")
+def main():
+    while True:
+        mostrar_menu()
+        opcion = input("Dime una opcion del menu: ")
+        opcion_salir = ejecutar_opcion(opcion)
+main()
