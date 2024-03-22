@@ -7,6 +7,37 @@ Descripcio
 """
 
 import random
+from data_source import *
+
+def mostrar_menu():
+    print("Selecciona una opción:")
+    print("1. Obtener datos desde el teclado")
+    print("2. Obtener datos desde el servidor")
+    print("3. Obtener datos desde ChatGPT")
+    print("4. Obtener datos desde un archivo")
+    print("5. Salir")
+
+def ejecutar_opcion(opcion):
+    if opcion == 1:
+        datos = get_data_from_keyboard()
+        # Aquí puedes hacer lo que necesites con los datos obtenidos
+    elif opcion == 2:
+        URL = "https://api.api-ninjas.com/v1/dadjokes"
+        get_data_from_server(URL)
+    elif opcion == 3:
+        pregunta = input("Introduce tu pregunta: ")
+        get_data_from_chatGTP(pregunta)
+    elif opcion == 4:
+        file_name = input("Introduce el nombre del archivo: ")
+        get_data_from_file(file_name)
+    elif opcion == 5:
+        print("Saliendo...")
+        return False
+    else:
+        print("Opción no válida. Por favor, selecciona una opción válida.")
+
+    return True
+
 def main():
     menu = ''
     while menu <1 and menu >4:

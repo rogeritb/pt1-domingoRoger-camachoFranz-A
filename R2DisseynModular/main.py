@@ -9,10 +9,9 @@ La seva funcionalitat és obtenir les dades, processar-les per a obtenir les “
 from crazy_words import *
 from data_source import *
 
-def main():
-    """Función principal"""
-    frase = get_data_from_keyboard()
-    frase_desordenada = desordenar_frase(frase)
-    print("Frase desordenada:", frase_desordenada)
+try:
+    mostrar_menu()
 
-main()
+
+except:
+    print("xx")
