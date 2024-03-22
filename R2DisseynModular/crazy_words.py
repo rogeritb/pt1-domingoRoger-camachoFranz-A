@@ -7,6 +7,18 @@ Descripcio
 """
 
 import random
+def main():
+    menu = ''
+    while menu <1 and menu >4:
+        menu = input('Ingrese un opcion: ')
+        if menu == '1':
+            print()
+        elif menu == '2':
+            print()
+        elif menu == '3':
+            print()
+        elif menu == '4':
+            print()
 def mantener_numeros_en_su_posicion(palabra):
     tiene_numeros = any(c.isdigit() for c in palabra)
     tiene_no_numeros = any(not c.isdigit() for c in palabra)
