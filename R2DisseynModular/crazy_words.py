@@ -6,7 +6,7 @@ Descripcio
 És “qui sap”, és a dir, té implementada la lògica necessària per a convertir un text de paraules “normals”, en un text de “paraules boges”
 """
 
-
+import random
 def mantener_numeros_en_su_posicion(palabra):
     tiene_numeros = any(c.isdigit() for c in palabra)
     tiene_no_numeros = any(not c.isdigit() for c in palabra)
@@ -15,7 +15,6 @@ def mantener_numeros_en_su_posicion(palabra):
         return palabra
 
     return ''.join(c for c in palabra)
-import random
 
 def desordenar_caracteres(caracteres):
     if len(caracteres) <= 2:
@@ -25,7 +24,7 @@ def desordenar_caracteres(caracteres):
     return caracteres[0] + ''.join(caracteres_intermedios) + caracteres[-1]
 
 def desordenar_palabra(palabra):
-    if len(palabra) <= 3 or (all(c.isdigit() or c == '.' for c in palabra)):
+    if len(palabra) <= 3 or (all(c.isdigit() or c == '.' or c == ',' or c == '$' or c == '€' for c in palabra)):
         return palabra
 
     primera_caracter = palabra[0]
