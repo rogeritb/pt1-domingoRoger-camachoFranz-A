@@ -46,15 +46,7 @@ def ejecutar_opcion(opcion):
     return continuar
 
 
-def main():
-    continuar = True
-    while continuar:
-        mostrar_menu()
-        opcion = input("Ingrese una opción del menú: ")
-        if opcion.isdigit():
-            continuar = ejecutar_opcion(opcion)
-        else:
-            print("Opción no válida. Por favor, ingrese un número del 1 al 5.")
+
 def mantener_numeros_en_su_posicion(palabra):
     tiene_numeros = any(c.isdigit() for c in palabra)
     tiene_no_numeros = any(not c.isdigit() for c in palabra)

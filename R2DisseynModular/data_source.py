@@ -8,7 +8,7 @@ Per tant, hauré d’implementar el mètode:
 """
 
 import requests
-#import openai
+import openai
 def get_data_from_keyboard():
     datos = input("Introduce los datos perra: ")
     return datos
