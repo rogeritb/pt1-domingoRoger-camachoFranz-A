@@ -9,6 +9,8 @@ Descripcio
 import random
 from data_source import *
 
+
+
 def mostrar_menu():
     print("1. Obtener datos desde el teclado")
     print("2. Obtener datos desde el servidor")
@@ -18,8 +20,14 @@ def mostrar_menu():
 
 def ejecutar_opcion(opcion):
     opcion = int(opcion)
+    continuar = True
     if opcion == 1:
         datos = get_data_from_keyboard()
+        print("Datos ingresados:", datos)
+        datos_procesados = mantener_numeros_en_su_posicion(datos)
+        print("Datos procesados:", datos_procesados)
+        frase_desordenada = desordenar_frase(datos_procesados)
+        print("Frase desordenada:", frase_desordenada)
     elif opcion == 2:
         URL = "https://api.api-ninjas.com/v1/dadjokes"
         get_data_from_server(URL)
@@ -31,24 +39,22 @@ def ejecutar_opcion(opcion):
         get_data_from_file(file_name)
     elif opcion == 5:
         print("Saliendo...")
-        return False
+        continuar = False
     else:
         print("Opción no válida. Por favor, selecciona una opción válida.")
 
-    return True
+    return continuar
+
 
 def main():
-    menu = ''
-    while menu <1 and menu >4:
-        menu = input('Ingrese un opcion: ')
-        if menu == '1':
-            print()
-        elif menu == '2':
-            print()
-        elif menu == '3':
-            print()
-        elif menu == '4':
-            print()
+    continuar = True
+    while continuar:
+        mostrar_menu()
+        opcion = input("Ingrese una opción del menú: ")
+        if opcion.isdigit():
+            continuar = ejecutar_opcion(opcion)
+        else:
+            print("Opción no válida. Por favor, ingrese un número del 1 al 5.")
 def mantener_numeros_en_su_posicion(palabra):
     tiene_numeros = any(c.isdigit() for c in palabra)
     tiene_no_numeros = any(not c.isdigit() for c in palabra)

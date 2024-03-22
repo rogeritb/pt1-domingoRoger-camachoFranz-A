@@ -8,7 +8,7 @@ Per tant, hauré d’implementar el mètode:
 """
 
 import requests
-import openai
+#import openai
 def get_data_from_keyboard():
     datos = input("Introduce los datos perra: ")
     return datos
@@ -31,6 +31,25 @@ def get_data_from_chatGTP(questio):
     ANSWER_QUANTITY = 1
 
     MAX_TOKENS = 2048  # How many words?
+    # Question 1
+
+    question = "Què és ChatGPT?"
+
+    print(f"Asking question: {question}")
+
+    completion = openai.Completion.create(engine=ENGINE, prompt=question, n=ANSWER_QUANTITY, max_tokens=MAX_TOKENS)
+
+    print(completion.choices[0].text)
+
+    # Question 2
+
+    question = "Què significa GPT de ChatGPT?"
+
+    print(f"Asking question: {question}")
+
+    completion = openai.Completion.create(engine=ENGINE, prompt=question, n=ANSWER_QUANTITY, max_tokens=MAX_TOKENS)
+
+    print(completion.choices[0].text)
 
 def get_data_from_file(file_name):
     pass
