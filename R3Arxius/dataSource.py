@@ -1,15 +1,15 @@
 """
-    FranzCamacho, RogerDomingo, AlfonsoOrtiz
-    ASIX1c M03 UF1
-    29/04/2024
-    Pt3
+    FranzCamacho RogerDomingo AlfonsoOrtiz
+    ASIX1c M03 UF1 A5
+    27/04/2024
+    Realease 3
 """
 import os
 import crazyWords
 import datetime
 import logging
 
-logging.basicConfig(filename='boges.log', level=logging.DEBUG, filemode='w', format='%(asctime)s - Paraulesboges - %(levelname)s - %(message)s')
+logging.basicConfig(filename='boges.log', level=logging.DEBUG,filemode='w', format='%(asctime)s - Paraulesboges - %(levelname)s - %(message)s')
 def comprobarFile():
         archivo = 'paraules.txt'
         if os.path.exists(archivo):

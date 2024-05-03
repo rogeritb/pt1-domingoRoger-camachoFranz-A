@@ -1,8 +1,8 @@
 """
-    FranzCamacho, RogerDomingo, AlfonsoOrtiz
-    ASIX1c M03 UF1
-    29/04/2024
-    Pt3
+    FranzCamacho RogerDomingo AlfonsoOrtiz
+    ASIX1c M03 UF1 A5
+    27/04/2024
+    Realease 3
 """
 import dataSource
 import datetime
